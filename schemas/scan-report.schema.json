@@ -1,0 +1,71 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/agent-skill-auditor/scan-report.schema.json",
+  "title": "Agent Skill Audit Report",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "scanner",
+    "target",
+    "summary",
+    "findings",
+    "inventory",
+    "files",
+    "limits",
+    "notices"
+  ],
+  "properties": {
+    "schema_version": { "const": "1.0.0" },
+    "scanner": {
+      "type": "object",
+      "required": ["name", "version", "execution_model"],
+      "properties": {
+        "name": { "const": "agent-skill-supply-chain-auditor" },
+        "version": { "type": "string" },
+        "execution_model": { "const": "static-only" }
+      }
+    },
+    "target": {
+      "type": "object",
+      "required": ["name", "scan_id"],
+      "properties": {
+        "name": { "type": "string" },
+        "scan_id": { "type": "string", "pattern": "^[a-f0-9]{64}$" }
+      }
+    },
+    "summary": { "type": "object" },
+    "findings": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "rule_id",
+          "title",
+          "severity",
+          "confidence",
+          "message",
+          "remediation",
+          "evidence",
+          "tags"
+        ],
+        "properties": {
+          "id": { "type": "string" },
+          "rule_id": { "type": "string", "pattern": "^[A-Z]{3,4}[0-9]{3}$" },
+          "title": { "type": "string" },
+          "severity": { "enum": ["info", "low", "medium", "high", "critical"] },
+          "confidence": { "enum": ["low", "medium", "high"] },
+          "message": { "type": "string" },
+          "remediation": { "type": "string" },
+          "evidence": { "type": "object" },
+          "tags": { "type": "array", "items": { "type": "string" } }
+        }
+      }
+    },
+    "inventory": { "type": "object" },
+    "files": { "type": "array" },
+    "limits": { "type": "object" },
+    "notices": { "type": "array", "items": { "type": "string" } }
+  }
+}

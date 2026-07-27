@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/agent-skill-auditor/agent-sbom.schema.json",
+  "title": "Agent-SBOM",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "bomFormat",
+    "specVersion",
+    "serialNumber",
+    "metadata",
+    "governance",
+    "components",
+    "dependencies",
+    "capabilities",
+    "mcpServers"
+  ],
+  "properties": {
+    "bomFormat": { "const": "Agent-SBOM" },
+    "specVersion": { "const": "1.0" },
+    "serialNumber": { "type": "string", "pattern": "^urn:sha256:[a-f0-9]{64}$" },
+    "metadata": { "type": "object" },
+    "governance": { "type": "object" },
+    "components": { "type": "array" },
+    "dependencies": { "type": "array" },
+    "capabilities": { "type": "array" },
+    "mcpServers": { "type": "array" }
+  }
+}

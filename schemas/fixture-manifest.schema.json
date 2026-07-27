@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/agent-skill-auditor/fixture-manifest.schema.json",
+  "title": "Synthetic Fixture Manifest",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "name", "fixtures"],
+  "properties": {
+    "schema_version": { "const": "1.0.0" },
+    "name": { "type": "string", "minLength": 1 },
+    "fixtures": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "path", "expected_rules"],
+        "properties": {
+          "id": { "type": "string", "pattern": "^[a-z0-9-]+$" },
+          "path": { "type": "string" },
+          "expected_rules": {
+            "type": "array",
+            "uniqueItems": true,
+            "items": { "type": "string", "pattern": "^[A-Z]{3,4}[0-9]{3}$" }
+          }
+        }
+      }
+    }
+  }
+}
