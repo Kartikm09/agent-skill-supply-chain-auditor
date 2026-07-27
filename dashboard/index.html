@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Interactive review of a synthetic Agent Skill supply-chain audit report"
+    />
+    <title>Agent Skill Audit Console</title>
+    <link rel="icon" href="data:," />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="brand-mark" aria-hidden="true">AS</div>
+      <div>
+        <p class="product-name">Agent Skill Audit Console</p>
+        <p class="product-context">Synthetic report review</p>
+      </div>
+      <span class="mode-indicator">Static inspection only</span>
+    </header>
+
+    <nav class="view-tabs" aria-label="Report views">
+      <button class="tab is-active" type="button" data-view="findings" aria-selected="true">
+        Findings
+      </button>
+      <button class="tab" type="button" data-view="permissions" aria-selected="false">
+        Permissions
+      </button>
+      <button class="tab" type="button" data-view="files" aria-selected="false">Files</button>
+    </nav>
+
+    <main>
+      <section class="report-header" aria-labelledby="report-title">
+        <div>
+          <p class="eyebrow">Deterministic sample scan</p>
+          <h1 id="report-title">Loading report</h1>
+          <p id="scan-metadata" class="scan-metadata">Reading local report data...</p>
+        </div>
+        <div id="risk-badge" class="risk-badge" aria-live="polite">Loading</div>
+      </section>
+
+      <section id="metrics" class="metrics" aria-label="Audit summary"></section>
+
+      <section id="findings-view" class="view-panel">
+        <div class="filter-bar" aria-label="Finding filters">
+          <label>
+            Search evidence
+            <input id="search-filter" type="search" placeholder="Rule, file, or message" />
+          </label>
+          <label>
+            Severity
+            <select id="severity-filter">
+              <option value="all">All severities</option>
+              <option value="critical">Critical</option>
+              <option value="high">High</option>
+              <option value="medium">Medium</option>
+              <option value="low">Low</option>
+              <option value="info">Info</option>
+            </select>
+          </label>
+          <label>
+            Rule
+            <select id="rule-filter">
+              <option value="all">All rules</option>
+            </select>
+          </label>
+          <p id="filter-status" class="filter-status" aria-live="polite"></p>
+        </div>
+
+        <div class="review-layout">
+          <div class="table-wrap">
+            <table>
+              <caption class="sr-only">Static audit findings</caption>
+              <thead>
+                <tr>
+                  <th scope="col">Rule</th>
+                  <th scope="col">Severity</th>
+                  <th scope="col">Location</th>
+                  <th scope="col">Confidence</th>
+                </tr>
+              </thead>
+              <tbody id="findings-table"></tbody>
+            </table>
+          </div>
+          <aside id="finding-detail" class="detail-panel" aria-live="polite">
+            <p class="empty-copy">Select a finding to inspect its redacted evidence.</p>
+          </aside>
+        </div>
+      </section>
+
+      <section id="permissions-view" class="view-panel" hidden>
+        <div id="permissions-content" class="inventory-layout"></div>
+      </section>
+
+      <section id="files-view" class="view-panel" hidden>
+        <div class="table-wrap">
+          <table>
+            <caption class="sr-only">Inventoried bundle files</caption>
+            <thead>
+              <tr>
+                <th scope="col">Path</th>
+                <th scope="col">Type</th>
+                <th scope="col">Bytes</th>
+                <th scope="col">SHA-256</th>
+              </tr>
+            </thead>
+            <tbody id="files-table"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="boundary-note" aria-labelledby="boundary-title">
+        <h2 id="boundary-title">Review boundary</h2>
+        <p>
+          This dashboard renders a committed synthetic report. The scanner did not execute code,
+          resolve packages, contact endpoints, or prove runtime safety.
+        </p>
+      </section>
+    </main>
+
+    <footer>
+      Independent public proof-of-work by Kartik BK Mishra. All displayed bundle data is synthetic.
+    </footer>
+    <script src="app.js" defer></script>
+  </body>
+</html>

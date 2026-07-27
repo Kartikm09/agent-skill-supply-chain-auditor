@@ -1,0 +1,165 @@
+{
+  "files": [
+    {
+      "kind": "file",
+      "path": "LICENSE",
+      "sha256": "8114f3cfd2871c9a581252097e7c4c25f5ee54cd8e6828d34a73fa4b6f5753d9",
+      "size_bytes": 115
+    },
+    {
+      "kind": "file",
+      "path": "SKILL.md",
+      "sha256": "7ca06c069b75d7ee7735b82a01583071ff8f934e96fcfb3c82c0769dc89ed584",
+      "size_bytes": 318
+    },
+    {
+      "kind": "file",
+      "path": "mcp.json",
+      "sha256": "b3f845774cdaf29a3bcd59e360d067328c47490ecd48043a3a64bf0e093dc36b",
+      "size_bytes": 240
+    }
+  ],
+  "findings": [
+    {
+      "confidence": "high",
+      "evidence": {
+        "fingerprint": "2e76c4aefeff89e4",
+        "line": 7,
+        "path": "mcp.json",
+        "snippet": "\"ACCESS_TOKEN\": \"<redacted-value:2b6975c74a4a>\""
+      },
+      "id": "c94de6fe392efa1b681a",
+      "message": "A credential-shaped value appears in bundle content.",
+      "remediation": "Revoke any real credential, remove it from history, and reference an environment variable instead.",
+      "rule_id": "SEC001",
+      "severity": "critical",
+      "tags": [
+        "secret",
+        "credential"
+      ],
+      "title": "Embedded secret-like value"
+    },
+    {
+      "confidence": "high",
+      "evidence": {
+        "fingerprint": "15bc1575c100c371",
+        "line": 1,
+        "path": "mcp.json",
+        "snippet": "permission field 'allowedTools' contains wildcard access"
+      },
+      "id": "5473827911f2280c13cf",
+      "message": "The configuration grants all tools or an equivalently broad capability.",
+      "remediation": "Declare only the specific tools required for the documented workflow.",
+      "rule_id": "MCP001",
+      "severity": "high",
+      "tags": [
+        "mcp",
+        "permission",
+        "least-privilege"
+      ],
+      "title": "Broad or wildcard tool permission"
+    },
+    {
+      "confidence": "high",
+      "evidence": {
+        "fingerprint": "e794653437ddb4c9",
+        "line": 1,
+        "path": "mcp.json",
+        "snippet": "server 'unsafe-shell' command is bash"
+      },
+      "id": "7cc4dddff7c0be8cbe79",
+      "message": "The MCP process uses a shell interpreter that can execute arbitrary command strings.",
+      "remediation": "Launch a version-pinned server executable directly with fixed, reviewed arguments.",
+      "rule_id": "MCP002",
+      "severity": "high",
+      "tags": [
+        "mcp",
+        "shell",
+        "execution"
+      ],
+      "title": "MCP server launches a general-purpose shell"
+    },
+    {
+      "confidence": "medium",
+      "evidence": {
+        "fingerprint": "80897c873ae86303",
+        "line": 1,
+        "path": "mcp.json",
+        "snippet": "server 'unsafe-shell' declares unsafe path in args"
+      },
+      "id": "bd273d3ee588b7dcdd06",
+      "message": "A declared path is absolute, traverses a parent directory, or targets a sensitive location.",
+      "remediation": "Resolve paths against an allowed root and reject absolute or parent-traversal segments.",
+      "rule_id": "PATH001",
+      "severity": "high",
+      "tags": [
+        "filesystem",
+        "path-traversal"
+      ],
+      "title": "Unsafe path reference"
+    }
+  ],
+  "inventory": {
+    "dependencies": [],
+    "license": "license",
+    "mcp_servers": [
+      {
+        "argument_count": 2,
+        "command": "bash",
+        "environment_keys": [
+          "ACCESS_TOKEN"
+        ],
+        "name": "unsafe-shell",
+        "source": "mcp.json",
+        "transport": "stdio",
+        "url": null
+      }
+    ],
+    "permissions": [
+      {
+        "capability": "*",
+        "kind": "mcp-tool",
+        "source": "mcp.json"
+      }
+    ],
+    "provenance": "https://example.invalid/fixtures/overprivileged-mcp-demo",
+    "skill": {
+      "description": "Synthetic overprivileged MCP configuration used to exercise defensive rules.",
+      "metadata_valid": true,
+      "name": "overprivileged-mcp-demo"
+    }
+  },
+  "limits": {
+    "max_depth": 20,
+    "max_file_bytes": 1048576,
+    "max_files": 2000,
+    "max_total_bytes": 20971520
+  },
+  "notices": [
+    "Static inspection only: no scanned code was imported or executed.",
+    "A clean result does not prove that a bundle is safe."
+  ],
+  "scanner": {
+    "execution_model": "static-only",
+    "name": "agent-skill-supply-chain-auditor",
+    "version": "0.1.0"
+  },
+  "schema_version": "1.0.0",
+  "summary": {
+    "files_inspected": 3,
+    "finding_count": 4,
+    "highest_severity": "critical",
+    "severity_counts": {
+      "critical": 1,
+      "high": 3,
+      "info": 0,
+      "low": 0,
+      "medium": 0
+    },
+    "symlinks_skipped": 0
+  },
+  "target": {
+    "name": "broad-mcp",
+    "scan_id": "128822856c6c568905e70856959b1b3cbc5e9f891981976a75d06e694b25f14f"
+  }
+}

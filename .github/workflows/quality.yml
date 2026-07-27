@@ -1,0 +1,52 @@
+name: quality
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    name: Python ${{ matrix.python-version }}
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ["3.11", "3.12", "3.13"]
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5
+        with:
+          python-version: ${{ matrix.python-version }}
+          cache: pip
+          cache-dependency-path: requirements-dev.txt
+      - name: Install pinned development tools
+        run: python -m pip install -r requirements-dev.txt -e .
+      - name: Run all quality gates
+        run: make verify PYTHON=python
+      - name: Confirm committed evidence is current
+        run: git diff --exit-code -- reports dashboard/data/sample-scan.json
+      - name: Upload deterministic reports
+        if: matrix.python-version == '3.12'
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        with:
+          name: synthetic-audit-evidence
+          path: |
+            reports/sample
+            reports/evaluation
+          if-no-files-found: error
+          retention-days: 14
+
+  container:
+    name: Container smoke test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+      - name: Build image
+        run: docker build --tag skill-auditor:ci .
+      - name: Verify CLI entry point
+        run: docker run --rm skill-auditor:ci --version
