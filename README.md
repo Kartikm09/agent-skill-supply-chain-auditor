@@ -205,6 +205,8 @@ scripts/                 Evaluation, determinism, and secret-check entry points
 .github/workflows/       Multi-version quality and CodeQL workflows
 ```
 
+The exact tracked-file inventory is recorded in [`FILE_MANIFEST.txt`](FILE_MANIFEST.txt).
+
 ## Recruiter Walkthrough
 
 A useful five-minute review path:
