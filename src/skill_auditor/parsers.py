@@ -144,7 +144,7 @@ def parse_mcp_json(text: str, filename: str) -> McpParseResult:
         return McpParseResult(False, None, ())
     except RecursionError:
         if mcp_named:
-            return McpParseResult(True, None, ("JSON nesting exceeds the parser limit",))
+            return McpParseResult(True, None, ("MCP configuration exceeds the nesting limit",))
         return McpParseResult(False, None, ())
     if not isinstance(value, dict):
         return McpParseResult(
