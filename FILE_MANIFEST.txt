@@ -8,6 +8,7 @@
 .github/ISSUE_TEMPLATE/rule_proposal.yml
 .github/pull_request_template.md
 .github/workflows/codeql.yml
+.github/workflows/pages.yml
 .github/workflows/quality.yml
 .gitignore
 ARCHITECTURE.md
@@ -17,11 +18,13 @@ CONTRIBUTING.md
 Dockerfile
 FILE_MANIFEST.txt
 LICENSE
+LINKEDIN_PROJECT_DESCRIPTION.md
 Makefile
 README.md
 RELEASE_PROCESS.md
 ROADMAP.md
 SECURITY.md
+TEST_REPORT.md
 THREAT_MODEL.md
 dashboard/README.md
 dashboard/app.js

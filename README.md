@@ -207,6 +207,8 @@ scripts/                 Evaluation, determinism, and secret-check entry points
 
 The exact tracked-file inventory is recorded in [`FILE_MANIFEST.txt`](FILE_MANIFEST.txt).
 
+Main-session verification evidence and the explicit Docker limitation are recorded in [TEST_REPORT.md](TEST_REPORT.md).
+
 ## Recruiter Walkthrough
 
 A useful five-minute review path:
