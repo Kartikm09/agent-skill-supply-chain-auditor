@@ -1,0 +1,158 @@
+{
+  "dataset": {
+    "fixture_count": 10,
+    "label_unit": "unique rule ID per fixture",
+    "name": "agent-skill-auditor-synthetic-fixtures",
+    "synthetic": true
+  },
+  "fixtures": [
+    {
+      "expected_rules": [],
+      "id": "safe-mcp",
+      "missed_rules": [],
+      "path": "safe/mcp-bundle",
+      "predicted_rules": [],
+      "scan_id": "165c68ffa6372b15258a1b7cb27df5d3722ee5c5ce5875f6e8f8d8f692613246",
+      "unexpected_rules": []
+    },
+    {
+      "expected_rules": [],
+      "id": "safe-minimal",
+      "missed_rules": [],
+      "path": "safe/minimal-skill",
+      "predicted_rules": [],
+      "scan_id": "b34d9497af9f219f8590752d0e34c4e70cf9d70a6b9b09c638153c2a8014e595",
+      "unexpected_rules": []
+    },
+    {
+      "expected_rules": [
+        "MCP001",
+        "MCP002",
+        "PATH001",
+        "SEC001"
+      ],
+      "id": "vulnerable-broad-mcp",
+      "missed_rules": [],
+      "path": "vulnerable/broad-mcp",
+      "predicted_rules": [
+        "MCP001",
+        "MCP002",
+        "PATH001",
+        "SEC001"
+      ],
+      "scan_id": "128822856c6c568905e70856959b1b3cbc5e9f891981976a75d06e694b25f14f",
+      "unexpected_rules": []
+    },
+    {
+      "expected_rules": [
+        "CMD001",
+        "DEP001"
+      ],
+      "id": "vulnerable-dangerous-installer",
+      "missed_rules": [],
+      "path": "vulnerable/dangerous-installer",
+      "predicted_rules": [
+        "CMD001",
+        "DEP001"
+      ],
+      "scan_id": "37a8180784a3f566c70f520640e5865689a8621f8a5088838e399ab03e934538",
+      "unexpected_rules": []
+    },
+    {
+      "expected_rules": [
+        "MCP003"
+      ],
+      "id": "vulnerable-malformed-mcp",
+      "missed_rules": [],
+      "path": "vulnerable/malformed-mcp",
+      "predicted_rules": [
+        "MCP003"
+      ],
+      "scan_id": "6c512386bf720204792f68bfbb14ae4f0b4268ff45cde6d0a9cd548ee30e1ac4",
+      "unexpected_rules": []
+    },
+    {
+      "expected_rules": [
+        "LIC001",
+        "PROV001"
+      ],
+      "id": "vulnerable-missing-governance",
+      "missed_rules": [],
+      "path": "vulnerable/missing-governance",
+      "predicted_rules": [
+        "LIC001",
+        "PROV001"
+      ],
+      "scan_id": "6608c2f66411de41a06b3d75d5a23c61867c10541346125fa665ddb09f4dccd0",
+      "unexpected_rules": []
+    },
+    {
+      "expected_rules": [
+        "INJ001"
+      ],
+      "id": "vulnerable-prompt-injection",
+      "missed_rules": [],
+      "path": "vulnerable/prompt-injection",
+      "predicted_rules": [
+        "INJ001"
+      ],
+      "scan_id": "5979cfdda24ebf9a14635749d9b9445765a12f07043f8e3b7ef369f5bd6263fa",
+      "unexpected_rules": []
+    },
+    {
+      "expected_rules": [
+        "SEC001"
+      ],
+      "id": "vulnerable-secret-exposure",
+      "missed_rules": [],
+      "path": "vulnerable/secret-exposure",
+      "predicted_rules": [
+        "SEC001"
+      ],
+      "scan_id": "b6e79259762238079b311f53b39d76ee536f251edfe12bb29437cfea6197f414",
+      "unexpected_rules": []
+    },
+    {
+      "expected_rules": [
+        "DEP001"
+      ],
+      "id": "vulnerable-unpinned-dependencies",
+      "missed_rules": [],
+      "path": "vulnerable/unpinned-dependencies",
+      "predicted_rules": [
+        "DEP001"
+      ],
+      "scan_id": "caba28a95d9ef7a160e1629dd644c37328f4664596ddfef15d631e9a56497867",
+      "unexpected_rules": []
+    },
+    {
+      "expected_rules": [
+        "NET001",
+        "PATH001"
+      ],
+      "id": "vulnerable-unsafe-network-path",
+      "missed_rules": [],
+      "path": "vulnerable/unsafe-network-path",
+      "predicted_rules": [
+        "NET001",
+        "PATH001"
+      ],
+      "scan_id": "9fca1111eb4609785e01f2e102c17c744e9c16431d8b6bc53ed2903e87df1f2a",
+      "unexpected_rules": []
+    }
+  ],
+  "limitations": [
+    "Metrics describe this small synthetic corpus only and do not estimate field performance.",
+    "Rule-level scoring does not measure duplicate finding quality or runtime behaviour.",
+    "The corpus was authored with the rules and should be supplemented by independent datasets."
+  ],
+  "metrics": {
+    "f1": 1.0,
+    "false_negatives": 0,
+    "false_positives": 0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "true_positives": 14
+  },
+  "schema_version": "1.0.0"
+}

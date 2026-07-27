@@ -1,0 +1,9 @@
+{
+  "mcpServers": {
+    "remote-demo": {
+      "url": "http://api.example.invalid/mcp",
+      "rootPath": "../../private"
+    }
+  },
+  "allowedTools": ["records.read"]
+}

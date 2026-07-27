@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.0.0",
+  "name": "agent-skill-auditor-synthetic-fixtures",
+  "fixtures": [
+    {
+      "id": "safe-minimal",
+      "path": "safe/minimal-skill",
+      "expected_rules": []
+    },
+    {
+      "id": "safe-mcp",
+      "path": "safe/mcp-bundle",
+      "expected_rules": []
+    },
+    {
+      "id": "vulnerable-prompt-injection",
+      "path": "vulnerable/prompt-injection",
+      "expected_rules": ["INJ001"]
+    },
+    {
+      "id": "vulnerable-dangerous-installer",
+      "path": "vulnerable/dangerous-installer",
+      "expected_rules": ["CMD001", "DEP001"]
+    },
+    {
+      "id": "vulnerable-secret-exposure",
+      "path": "vulnerable/secret-exposure",
+      "expected_rules": ["SEC001"]
+    },
+    {
+      "id": "vulnerable-broad-mcp",
+      "path": "vulnerable/broad-mcp",
+      "expected_rules": ["MCP001", "MCP002", "PATH001", "SEC001"]
+    },
+    {
+      "id": "vulnerable-missing-governance",
+      "path": "vulnerable/missing-governance",
+      "expected_rules": ["LIC001", "PROV001"]
+    },
+    {
+      "id": "vulnerable-malformed-mcp",
+      "path": "vulnerable/malformed-mcp",
+      "expected_rules": ["MCP003"]
+    },
+    {
+      "id": "vulnerable-unpinned-dependencies",
+      "path": "vulnerable/unpinned-dependencies",
+      "expected_rules": ["DEP001"]
+    },
+    {
+      "id": "vulnerable-unsafe-network-path",
+      "path": "vulnerable/unsafe-network-path",
+      "expected_rules": ["NET001", "PATH001"]
+    }
+  ]
+}

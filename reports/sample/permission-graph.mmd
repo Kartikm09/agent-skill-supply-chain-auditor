@@ -1,0 +1,10 @@
+flowchart LR
+  bundle["broad-mcp"]
+  reviewer["Human approval boundary"]
+  reviewer -. review .-> bundle
+  permission_1["Tool: _"]
+  bundle --> permission_1
+  server_1["MCP: unsafe-shell (stdio)"]
+  bundle --> server_1
+  server_1_env_1["Environment key: ACCESS_TOKEN"]
+  server_1_env_1 -. injected at runtime .-> server_1

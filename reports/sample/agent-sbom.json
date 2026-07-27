@@ -1,0 +1,65 @@
+{
+  "bomFormat": "Agent-SBOM",
+  "capabilities": [
+    {
+      "capability": "*",
+      "kind": "mcp-tool",
+      "source": "mcp.json"
+    }
+  ],
+  "components": [
+    {
+      "inspectionStatus": "inventoried",
+      "name": "LICENSE",
+      "sha256": "8114f3cfd2871c9a581252097e7c4c25f5ee54cd8e6828d34a73fa4b6f5753d9",
+      "sizeBytes": 115,
+      "type": "file"
+    },
+    {
+      "inspectionStatus": "inventoried",
+      "name": "SKILL.md",
+      "sha256": "7ca06c069b75d7ee7735b82a01583071ff8f934e96fcfb3c82c0769dc89ed584",
+      "sizeBytes": 318,
+      "type": "file"
+    },
+    {
+      "inspectionStatus": "inventoried",
+      "name": "mcp.json",
+      "sha256": "b3f845774cdaf29a3bcd59e360d067328c47490ecd48043a3a64bf0e093dc36b",
+      "sizeBytes": 240,
+      "type": "file"
+    }
+  ],
+  "dependencies": [],
+  "governance": {
+    "license": "license",
+    "provenance": "https://example.invalid/fixtures/overprivileged-mcp-demo"
+  },
+  "mcpServers": [
+    {
+      "argument_count": 2,
+      "command": "bash",
+      "environment_keys": [
+        "ACCESS_TOKEN"
+      ],
+      "name": "unsafe-shell",
+      "source": "mcp.json",
+      "transport": "stdio",
+      "url": null
+    }
+  ],
+  "metadata": {
+    "component": {
+      "name": "broad-mcp",
+      "scanId": "128822856c6c568905e70856959b1b3cbc5e9f891981976a75d06e694b25f14f",
+      "type": "agent-skill-bundle"
+    },
+    "tool": {
+      "executionModel": "static-only",
+      "name": "agent-skill-supply-chain-auditor",
+      "version": "0.1.0"
+    }
+  },
+  "serialNumber": "urn:sha256:128822856c6c568905e70856959b1b3cbc5e9f891981976a75d06e694b25f14f",
+  "specVersion": "1.0"
+}

@@ -1,0 +1,12 @@
+{
+  "mcpServers": {
+    "unsafe-shell": {
+      "command": "bash",
+      "args": ["-c", "node ../outside/server.js"],
+      "env": {
+        "ACCESS_TOKEN": "ghp_syntheticportfoliofixture000000"
+      }
+    }
+  },
+  "allowedTools": ["*"]
+}
