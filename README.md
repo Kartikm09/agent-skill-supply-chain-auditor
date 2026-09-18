@@ -63,6 +63,7 @@ Python 3.11 or newer is required. Runtime dependencies: **zero**.
 ```bash
 python3 -m venv .venv
 . .venv/bin/activate
+python -m pip install pip==26.2.1
 python -m pip install -r requirements-dev.txt -e .
 skill-auditor scan fixtures/safe/minimal-skill --output-dir reports/local
 ```

@@ -3,6 +3,7 @@ PYTHON ?= python3
 .PHONY: setup lint compile test sample benchmark verify clean
 
 setup:
+	$(PYTHON) -m pip install pip==26.2.1
 	$(PYTHON) -m pip install -r requirements-dev.txt -e .
 
 lint:
