@@ -25,7 +25,9 @@ jobs:
           cache: pip
           cache-dependency-path: requirements-dev.txt
       - name: Install pinned development tools
-        run: python -m pip install -r requirements-dev.txt -e .
+        run: |
+          python -m pip install pip==26.2.1
+          python -m pip install -r requirements-dev.txt -e .
       - name: Run all quality gates
         run: make verify PYTHON=python
       - name: Confirm committed evidence is current
